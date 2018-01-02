@@ -13,7 +13,8 @@ using namespace zxing;
 QZXing::QZXing(QObject *parent) : QObject(parent)
 {
     decoder = new MultiFormatReader();
-    setDecoder(DecoderFormat_QR_CODE |
+    setDecoder(DecoderFormat_QR_CODE);
+    /*setDecoder(DecoderFormat_QR_CODE |
                DecoderFormat_DATA_MATRIX |
                DecoderFormat_UPC_E |
                DecoderFormat_UPC_A |
@@ -22,7 +23,7 @@ QZXing::QZXing(QObject *parent) : QObject(parent)
                DecoderFormat_CODE_128 |
                DecoderFormat_CODE_39 |
                DecoderFormat_ITF |
-               DecoderFormat_Aztec);
+               DecoderFormat_Aztec);*/
 }
 
 QZXing::~QZXing() {
@@ -136,6 +137,14 @@ QVariantHash QZXing::decodeImageEx(QImage image)
        resultMap.insert("points", QList<QVariant>());
     }
     return resultMap;
+}
+
+QString QZXing::decodeImageFromFile(QString imageFilePath)
+{
+    //used to have a check if this image exists
+    //but was removed because if the image file path doesn't point to a valid image
+    // then the QImage::isNull will return true and the decoding will fail eitherway.
+    return decodeImage(QImage(imageFilePath));
 }
 
 QString QZXing::decodeImageQML(const QUrl &imageUrl)

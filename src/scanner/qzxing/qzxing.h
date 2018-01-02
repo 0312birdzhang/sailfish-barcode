@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QImage>
 #include <QVariantHash>
+#include <QtQuick>
 
 /**
   * A class containing a very very small subset of the ZXing library.
@@ -47,6 +48,14 @@ public:
       */
     void setDecoder(DecoderFormatType hint);
 
+#if QT_VERSION >= 0x040700
+static void registerQMLTypes()
+{
+    qmlRegisterType<QZXing>("harbour.barcode.QZXing", 2, 2, "QZXing");
+}
+#endif
+
+
 public slots:
     /**
       * The decoding function. Will try to decode the given image based on the enabled decoders.
@@ -59,6 +68,9 @@ public slots:
       * The decoding function accessible from QML
       */
     QString decodeImageQML(const QUrl &imageUrl);
+
+
+    QString decodeImageFromFile(QString imageFilePath);
 
     /**
       * The decoding function accessible from QML. Able to set the decoding

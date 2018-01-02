@@ -17,6 +17,10 @@ int main(int argc, char *argv[])
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
+    // QZXing QR Decoder
+    QZXing qrdecoder;
+    qrdecoder.registerQMLTypes();
+
     qmlRegisterType<AutoBarcodeScanner>("harbour.barcode.AutoBarcodeScanner", 1, 0, "AutoBarcodeScanner");
 
     view->engine()->addImageProvider("scanner", new CaptureImageProvider());

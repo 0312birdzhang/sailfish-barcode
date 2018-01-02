@@ -8,7 +8,6 @@ INCLUDEPATH += \
 HEADERS += \
     $$PWD/CameraImageWrapper.h \
     $$PWD/qzxing.h \
-    $$PWD/qzxing_plugin.h \
     $$PWD/qzxing_global.h \
     $$PWD/zxing/ResultPointCallback.h \
     $$PWD/zxing/ResultPoint.h \
@@ -102,7 +101,6 @@ HEADERS += \
 SOURCES += \
     $$PWD/CameraImageWrapper.cpp \
     $$PWD/qzxing.cpp \
-    $$PWD/qzxing_plugin.cpp \
     $$PWD/zxing/ResultPointCallback.cpp \
     $$PWD/zxing/ResultPoint.cpp \
     $$PWD/zxing/Result.cpp \
